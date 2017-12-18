@@ -1,40 +1,37 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
-// import VueRouter from '../node_modules/vue-router';
+import VueRouter from 'vue-router';
 import App from './App';
-// import goods from './components/goods/goods';
-// import seller from './components/seller/seller';
-// import ratings from './components/ratings/ratings';
+import goods from './components/goods/goods';
+import seller from './components/seller/seller';
+import ratings from './components/ratings/ratings';
 
 Vue.config.productionTip = false;
-// Vue.use(VueRouter);
+Vue.use(VueRouter);
+
+const routes = [
+	{path: '/goods', component: goods},
+	{path: '/ratings', component: ratings},
+	{path: '/seller', component: seller}
+];
+
+const router = new VueRouter({
+  routes
+  // linkActiveClass: ‘active’
+});
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  router,
+  render: h => h(App),
   template: '<App/>',
   components: { App }
 });
-// let app = Vue.extend(App);
-// let router = new VueRouter();
 
-// router.map({
-//   '/goods': {
-//     components: goods
-//   }
-// });
-// const routes = [
-// 	{path: '/goods', component: goods},
-// 	{path: '/ratings', component: ratings},
-// 	{path: '/seller', component: seller}
-// ];
-
-// const router = new VueRouter({
-//   routes
-// });
-
-// const app = new Vue({
+// new Vue({
 //   router
 // }).$mount('#app');
-// router.start(app, '#app');
+
+router.push('/goods');
