@@ -30,4 +30,7 @@ new Vue({
   components: { App }
 });
 
+
+
+
 router.push('/goods');
